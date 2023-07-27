@@ -131,7 +131,6 @@ export default function Searchcity() {
       </datacontext.Provider>
 
       {/* <News/> */}
-      <Footer/>
     </div>
   )
 }
