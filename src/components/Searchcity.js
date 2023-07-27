@@ -2,8 +2,6 @@ import React, { useState, useEffect, createContext } from 'react'
 import './style.css'
 import  Citydata from './Citydata'
 import Forecast from './Forecast'
-import News from './News'
-import Footer from './Footer'
 
 const datacontext = createContext();
 
@@ -130,7 +128,6 @@ export default function Searchcity() {
       
       </datacontext.Provider>
 
-      {/* <News/> */}
     </div>
   )
 }
