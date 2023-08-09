@@ -31,7 +31,7 @@ export default function News() {
         <div>
             <div className='row p-3'>
                 <h2 className='text-center pt-3 text-white'>Weather Headlines :</h2>
-                {news && news.length > 0 ? (
+                { news && news && news.length > 0 ? (
                     news.map((temp, index) => {
                         if (index % count === 0) {
                             return (
