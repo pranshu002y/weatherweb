@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from 'react'
 import './style.css'
 import  Citydata from './Citydata'
 import Forecast from './Forecast'
-
+import News from "./News"
 const datacontext = createContext();
 
 export default function Searchcity() {
@@ -125,7 +125,7 @@ export default function Searchcity() {
       <datacontext.Provider value={{temperature,min_temp,max_temp,feels,humid,cloud,descp,icon,wind,press,deg,sunr,suns,visib,city}}>
         <Citydata/>
         <Forecast/>
-      
+        <News/>
       </datacontext.Provider>
 
     </div>
