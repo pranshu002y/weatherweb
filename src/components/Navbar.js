@@ -16,8 +16,7 @@ export default function Navbar() {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Maps</a>
-                            </li>
-                        
+                            </li>                        
                     
                         </ul>
                         

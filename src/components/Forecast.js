@@ -66,12 +66,12 @@ export default function Forecast() {
 
                 <h2 className='text-center pt-3'>Hourly Forcast :</h2>
 
-                <div className="hourly row">
+                <div className="hourly">
 
             
-                        {api.slice(0,8).map((forecast, index) => (
+                        {api.slice(0,24).map((forecast, index) => (
 
-                            <div key={index} className="weather-item col m-1">
+                            <div key={index} className="weather-item">
 
                                 <u><h5 className='text-center '>{formatTime(forecast.dt_txt)}</h5></u>
 
@@ -80,9 +80,10 @@ export default function Forecast() {
                                 <img
                                     src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`}
                                     alt={forecast.weather[0].description}
-                                    className="img-fluid mx-auto d-block"
+                                    className="weather-img"
+                                    
                                 />
-                                <p className='text-center'>{forecast.weather[0].description}</p>
+                                <p className='text-center weather_txt'>{forecast.weather[0].description}</p>
 
 
                             </div>
@@ -90,9 +91,11 @@ export default function Forecast() {
                   
                 </div>
 
-                <div className='row'>
+            
                     <h2 className='text-center mt-3'>Daily Forcast</h2>
 
+                    <div className='daily_data'>
+                    <div className='daily'>
                     {api.map((forecast, index) => {
 
                         if (index % 8 === 0) {
@@ -108,7 +111,7 @@ export default function Forecast() {
                                     <img
                                         src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`}
                                         alt={forecast.weather[0].description}
-                                        className="img-fluid mx-auto d-block"
+                                        className="weather-img"
                                     />
                                     <p className='text-center'>{forecast.weather[0].description}</p>
 
@@ -117,6 +120,7 @@ export default function Forecast() {
                         }
                     })}
                 </div>
+            </div>
             </div>
             )}
 

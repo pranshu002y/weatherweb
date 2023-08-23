@@ -1,8 +1,11 @@
 import React, { useState, useEffect, createContext } from 'react'
 import './style.css'
-import  Citydata from './Citydata'
+import Citydata from './Citydata'
 import Forecast from './Forecast'
-import News from "./News"
+import News from './News'
+import Footer from './Footer'
+
+
 const datacontext = createContext();
 
 export default function Searchcity() {
@@ -11,13 +14,13 @@ export default function Searchcity() {
   const [data, setdata] = useState({})
   const [sky, setsky] = useState(null)
   const [sysdata, setsysdata] = useState(null)
-  const [winds,setwinds] = useState(null)
-  const [cord,setcord] =useState(null)
+  const [winds, setwinds] = useState(null)
+  const [cord, setcord] = useState(null)
 
   const [txt, set_txt] = useState("delhi")
 
-  let lati=null;
-  let long=null;
+  let lati = null;
+  let long = null;
 
   let temperature = null;
   let min_temp = null;
@@ -30,15 +33,15 @@ export default function Searchcity() {
   let descp = null;
   let icon = null;
 
-  let wind=null;
-  let deg=null;
+  let wind = null;
+  let deg = null;
 
-  let country=null;
-  let sunr=null;
-  let suns=null;
-  let visib=null;
+  let country = null;
+  let sunr = null;
+  let suns = null;
+  let visib = null;
 
-  let city=null;
+  let city = null;
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -54,7 +57,7 @@ export default function Searchcity() {
         setsysdata(respjson.sys)
         setwinds(respjson.wind)
         setcord(respjson.coord)
-        
+
         console.log(respjson)
       }
 
@@ -70,9 +73,9 @@ export default function Searchcity() {
 
   }, [txt]);
 
-  if(cord){
-    lati=cord.lon.toFixed(2)
-    long=cord.lat.toFixed(2);
+  if (cord) {
+    lati = cord.lon.toFixed(2)
+    long = cord.lat.toFixed(2);
   }
 
   if (data) {
@@ -85,48 +88,54 @@ export default function Searchcity() {
   }
 
 
-  if(sky){
-    cloud=sky.main;
-    descp=sky.description;
-    icon=sky.icon;
+  if (sky) {
+    cloud = sky.main;
+    descp = sky.description;
+    icon = sky.icon;
   }
-  if(winds){
-    wind=winds.speed;
-    deg=winds.deg;
-  }
-
-  if(sysdata){
-    country=sysdata.country;
-    sunr=new Date(sysdata.sunrise*1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    suns=new Date(sysdata.sunset*1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
+  if (winds) {
+    wind = winds.speed;
+    deg = winds.deg;
   }
 
-  if(api){
-    visib=(api.visibility)/1000;
-    city=api.name;
+  if (sysdata) {
+    country = sysdata.country;
+    sunr = new Date(sysdata.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    suns = new Date(sysdata.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  }
+
+  if (api) {
+    visib = (api.visibility) / 1000;
+    city = api.name;
   }
 
   return (
     <div>
 
-      <div className='search_box  col-md-6 mx-auto pt-4'>
-        
-        <input className='input_place form-control' placeholder='Search the city' type="text" onChange={(event) => { set_txt(event.target.value) }} />
-      </div>
+      <div className='main-background'>
 
-      <div className='cityname pt-5'>
-       
-        <i className="bi bi-geo-alt-fill text-white display-6" ></i>  
-        <span className='display-2 text-white'>{txt}, {country}</span>
-       
-      </div>
+        <div className='search_box  col-md-6 mx-auto pt-4'>
 
-      <datacontext.Provider value={{temperature,min_temp,max_temp,feels,humid,cloud,descp,icon,wind,press,deg,sunr,suns,visib,city}}>
-        <Citydata/>
-        <Forecast/>
-        <News/>
-      </datacontext.Provider>
+          <input className='input_place form-control' placeholder='Search the city' type="text" onChange={(event) => { set_txt(event.target.value) }} />
+        </div>
+
+        <div className='cityname pt-5'>
+
+          <i className="bi bi-geo-alt-fill text-white display-6" ></i>
+          <span className='display-2 text-white'>{txt}, {country}</span>
+
+        </div>
+
+        <datacontext.Provider value={{ temperature, min_temp, max_temp, feels, humid, cloud, descp, icon, wind, press, deg, sunr, suns, visib, city }}>
+          <Citydata />
+          <Forecast />
+
+        </datacontext.Provider>
+
+        {/* <News/> */}
+        <Footer />
+      </div>
 
     </div>
   )

@@ -8,7 +8,7 @@ import Mist from './images/mist.png'
 import Rain from './images/rain.png'
 import Haze from './images/haze.png'
 
-import './style.css'
+import '../App.css'
 
 export default function Citydata() {
 
@@ -18,26 +18,7 @@ export default function Citydata() {
 
     console.log(cloud)
 
-    // if (cloud) {
-    //     if (cloud == "Clouds") {
-    //         sky_img = Clouds
-    //     }
-    //     if (cloud == "Mist") {
-    //         sky_img = Mist
-    //     }
-    //     if (cloud == "Rain") {
-    //         sky_img = Rain
-    //     }
-    //     if (cloud == "Clear") {
-    //         sky_img = Clear
-    //     }
-    //     if (cloud == "Drizzle") {
-    //         sky_img = Drizzle
-    //     }
-    //     if (cloud == "Haze") {
-    //         sky_img = Haze
-    //     }
-    // }
+  
 
     return (
         <div className='city_information text-white pt-5 d-flex justify-content-center align-items-center align-items-center'>

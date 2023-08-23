@@ -1,3 +1,15 @@
+/* @media (max-width: 750px){
+  .city_info{
+ 
+    flex-direction:column;
+    flex-wrap: wrap;
+    background-color: aqua;
+    
+  }
+  .sky_image{
+    width:2rem;
+  }
+} */
 
 
 
@@ -58,7 +70,6 @@ body{
 
 .icon{
   width:70%;
-  box-shadow: 4px 4px 8px rgba(45, 68, 73, 0.8);
 
 }
 
